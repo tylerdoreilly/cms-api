@@ -31,7 +31,7 @@ app.put('/api/templates/:id', db.updateTemplate)
 app.delete('/api/templates/:id',db.deleteTemplate)
 
 app.get('/api/templateItems', db.getTemplateItems)
-
+app.get('/api/templateItemsCustom', db.getCustomTemplateItems)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

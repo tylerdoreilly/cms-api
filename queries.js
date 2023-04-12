@@ -83,6 +83,15 @@ const getTemplateItems = (request, response) => {
   })
 }
 
+const getCustomTemplateItems = (request, response) => {
+  pool.query('SELECT * FROM template_items_custom ORDER BY id ASC', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
 const getTemplateById = (request, response) => {
   const id = parseInt(request.params.id)
 
@@ -146,4 +155,5 @@ module.exports = {
     updateTemplate,
     deleteTemplate,
     getTemplateItems,
+    getCustomTemplateItems
   }

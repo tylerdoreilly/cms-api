@@ -118,11 +118,11 @@ const updateTemplate = (request, response) => {
   let params = request.params
   let id = params.id
 
-  const { type, title, data} = request.body
+  const { type, title, data, date_updated} = request.body
   console.log('request',request)
   pool.query(
-    'UPDATE templates SET type = $1, title = $2, data = $3 WHERE id = $4',
-    [type, title, data, id],
+    'UPDATE templates SET type = $1, title = $2, data = $3, date_updated = $4 WHERE id = $5',
+    [type, title, data, date_updated, id],
     (error, results) => {
       if (error) {
         throw error

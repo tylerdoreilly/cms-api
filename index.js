@@ -28,10 +28,12 @@ app.get('/api/templates', db.getTemplates)
 app.get('/api/templates/:id', db.getTemplateById)
 app.post('/api/templates', db.createTemplate)
 app.put('/api/templates/:id', db.updateTemplate)
+app.put('/api/templates/:id', db.updateTemplateDetails)
 app.delete('/api/templates/:id',db.deleteTemplate)
 
 app.get('/api/templateItems', db.getTemplateItems)
 app.get('/api/templateItemsCustom', db.getCustomTemplateItems)
+app.get('/api/templateTypes', db.getTemplateTypes)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

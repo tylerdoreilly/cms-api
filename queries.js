@@ -132,14 +132,15 @@ const getTemplateById = (request, response) => {
   })
 }
 
-const createTemplate = (request, response) => {rs
-  const { name, email } = request.body
+const createTemplate = (request, response) => {
+  const { id, title, data, date_created, date_asof, date_updated, type_new } = request.body
 
-  pool.query('INSERT INTO templates (name, email) VALUES ($1, $2) RETURNING *', [name, email], (error, results) => {
+  pool.query('INSERT INTO templates (id, title, data, date_created, date_asof, date_updated, type_new) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', 
+  [id, title, data, date_created, date_asof, date_updated, type_new], (error, results) => {
     if (error) {
       throw error
     }
-    response.status(201).send(`User added with ID: ${results.rows[0].id}`)
+    response.status(201).send(`Template added with ID: ${results.rows[0].id}`)
   })
 }
 

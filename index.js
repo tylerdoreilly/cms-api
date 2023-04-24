@@ -33,6 +33,7 @@ app.delete('/api/templates/:id',db.deleteTemplate)
 
 app.get('/api/templateItems', db.getTemplateItems)
 app.get('/api/templateItemsCustom', db.getCustomTemplateItems)
+app.post('/api/templateItemsCustom', db.createCustomTemplateItem)
 app.get('/api/templateTypes', db.getTemplateTypes)
 
 app.listen(port, () => {

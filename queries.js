@@ -74,7 +74,7 @@ const deleteUser = (request, response) => {
 //   })
 // }
 const getTemplates = (request, response) => {
-  pool.query('SELECT templates.id, templates.title, templates.date_created, templates.date_asof, templates.date_updated, template_types.id as type_id, template_types.type FROM templates INNER JOIN template_types ON templates.type_new = template_types.id ORDER BY id ASC', (error, results) => {
+  pool.query('SELECT templates.id, templates.title, templates.data, templates.date_created, templates.date_asof, templates.date_updated, template_types.id as type_id, template_types.type FROM templates INNER JOIN template_types ON templates.type_new = template_types.id ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error
     }

@@ -3,7 +3,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3080;
-const db = require('./queries')
+const db = require('./queries');
+const templates = require('./templateQueries');
 var fs = require('file-system');
 
 app.use(bodyParser.json())
@@ -35,17 +36,20 @@ app.post('/api/users', db.createUser)
 app.put('/api/users/:id', db.updateUser)
 app.delete('/api/users/:id', db.deleteUser)
 
-app.get('/api/templates', db.getTemplates)
-app.get('/api/templates/:id', db.getTemplateById)
-app.post('/api/templates', db.createTemplate)
-app.put('/api/templates/:id', db.updateTemplate)
-app.put('/api/templates/:id', db.updateTemplateDetails)
-app.delete('/api/templates/:id',db.deleteTemplate)
+app.get('/api/templates', templates.getTemplates)
+app.get('/api/templates/:id', templates.getTemplateById)
+app.post('/api/templates', templates.createTemplate)
+app.put('/api/templates/:id', templates.updateTemplate)
+app.put('/api/templates/:id', templates.updateTemplateDetails)
+app.delete('/api/templates/:id',templates.deleteTemplate)
 
-app.get('/api/templateItems', db.getTemplateItems)
-app.get('/api/templateItemsCustom', db.getCustomTemplateItems)
-app.post('/api/templateItemsCustom', db.createCustomTemplateItem)
-app.get('/api/templateTypes', db.getTemplateTypes)
+app.get('/api/templateItems', templates.getTemplateItems)
+app.get('/api/templateItemsCustom', templates.getCustomTemplateItems)
+app.post('/api/templateItemsCustom', templates.createCustomTemplateItem)
+app.get('/api/templateTypes', templates.getTemplateTypes)
+
+app.get('/api/customControls', templates.getCustomControls)
+app.get('/api/customControlsLibrary', templates.getCustomControlsLibrary)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

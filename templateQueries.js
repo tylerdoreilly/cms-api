@@ -48,14 +48,14 @@ const getCustomTemplateItems = (request, response) => {
   })
 }
 
-const getCustomControls = (request, response) => {
-  pool.query('SELECT * FROM custom_controls ORDER BY id ASC', (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).json(results.rows)
-  })
-}
+// const getCustomControls = (request, response) => {
+//   pool.query('SELECT * FROM custom_controls ORDER BY id ASC', (error, results) => {
+//     if (error) {
+//       throw error
+//     }
+//     response.status(200).json(results.rows)
+//   })
+// }
 
 const getCustomControlsLibrary = (request, response) => {
   pool.query('SELECT * FROM custom_controls_library ORDER BY id ASC', (error, results) => {
@@ -163,6 +163,6 @@ module.exports = {
     getTemplateTypes,
     updateTemplateDetails,
     createCustomTemplateItem,
-    getCustomControls,
+    // getCustomControls,
     getCustomControlsLibrary
   }
